@@ -1,0 +1,599 @@
+<title>โปรโมชั่น |  ลดราคา Sale คูปอง ส่วนลด</title>
+<meta name="keywords" content="จองตั๋วเครื่องบิน, ตั๋วเครื่องบิน, ตั๋วเครื่องบินราคาถูก, ราคาตั๋วเครื่องบิน, จองตั๋วเครื่องบินราคาถูก, เช็คราคาตั๋วเครื่องบิน, โปรโมชั่นตั๋วเครื่องบิน, ซื้อตั๋วเครื่องบิน, เช็คตั๋วเครื่องบิน, ค่าตั๋วเครื่องบิน, เที่ยวบิน, ตั๋วเครื่องบินในประเทศราคาถูก, จองตั๋วเครื่องบินในประเทศ, ส่วนลด, ดีล, คูปอง,ส่วนลดบัตรเครดิต,โปรโมชั่นล่าสุด, โปรโมชั่นห้างสรรพสินค้า , โปรโมชั่นอาหารและเครื่องดื่ม , Clearance Sale, ลดล้างสต๊อก , โปรโมชั่นท่องเที่ยวและเดินทาง, โปรโมชั่นที่พัก, รวมโปรโมชั่นฮอตสุดคุ้ม, โบรชัวร์สินค้าลดราคา , อาหารบุฟเฟ่ต์ , สินค้าลดราคา , ดีลราคาพิเศษ" />
+<meta name="description" content="รวมส่วนลด โปรโมชั่น จากร้านอาหาร เครื่องดื่ม ความงาม สุขภาพ สปา ท่องเที่ยว โรงแรม รีสอร์ท ที่พัก ห้างสรรพสินค้า สายการบิน ส่วนลดบัตรเครดิต และบัตรสิทธิพิเศษสำหรับลูกค้า"/>	
+<meta property="fb:admins" content="100000420642711"/>
+<meta property="fb:app_id" content="114215282007768"/>
+<link rel="stylesheet" href="http://www.painaidii.com/../tpl/reset.css" />
+<link rel="stylesheet" href="http://www.painaidii.com/../tpl/style.css" />
+<link rel="stylesheet" href="http://www.painaidii.com/../tpl/style2.css" />
+ <script src="http://www.painaidii.com/../tpl/js/jquery-latest.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	 var recIndex=1;
+	 var timer;
+	 $(function(){
+		timerSwapRec();
+
+		$('#search-keyword-offer').click(function(){
+				if($(this).val()==$(this).attr('title'))
+					$(this).val('');
+				$(this).css('font-size','14px');
+				$(this).css('color','#000');
+			});
+			$('#search-keyword-offer').blur(function(){
+				if($(this).val()*1==0){
+					 $(this).val($(this).attr('title'));
+					 $(this).css('font-size','12px');
+					 $(this).css('color','#979797');
+				}
+			});
+
+		$('#search-address-offer').click(function(){
+				if($(this).val()==$(this).attr('title'))
+					$(this).val('');
+				$(this).css('font-size','14px');
+				$(this).css('color','#000');
+			});
+			$('#search-address-offer').blur(function(){
+				if($(this).val()*1==0){
+					 $(this).val($(this).attr('title'));
+					 $(this).css('font-size','12px');
+					 $(this).css('color','#979797');
+				}
+			});
+
+		$("#search-form").submit(function(){
+			if($('#search-keyword-offer').val()==$('#search-keyword-offer').attr('title'))
+				$('#search-keyword-offer').val('');
+			if($('#search-address-offer').val()==$('#search-address-offer').attr('title'))
+				$('#search-address-offer').val('')
+		});
+
+
+		$('#categoryID').change(function(){
+			$.post('/api.php',{'func':'getSubCategoryList','categoryID':$(this).val()},function(result){
+				$('#subcategoryID').empty();
+				$('#subcategoryID').append("<option value=''>หมวดย่อย</option>");
+				$.each(result.subcategoryList,function(i,subcategory){
+					$('#subcategoryID').append("<option value='"+subcategory.subcategoryID+"'>"+subcategory.subcategoryThai+"</option>");
+				});
+			},'json');
+		});/*end of catChange*/
+
+		$('#offerTypeID').change(function(){
+					if($('#offerTypeID option:selected').val()==3){
+						$('#creditCardID').show();
+						$.post('/api.php',{'func':'getCreditCard'},function(result){
+							$('#creditCardID').empty();
+							$('#creditCardID').append("<option value=''>เลือกบัตรเครดิต</option>");
+							$.each(result.creditCardList,function(i,creditCard){
+								$('#creditCardID').append("<option value='"+creditCard.creditCardID+"'>"+creditCard.bankIssuer+"</option>");
+							});
+						},'json');
+					}else{
+						$('#creditCardID').hide();
+						$('#creditCardID').empty();
+					}
+				});/*end of cardChange*/
+
+	 });
+</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header" class="clearfix"><link href="http://www.painaidii.com/../tpl/./font-awesome.min.css" rel="stylesheet" type="text/css">
+<script>
+var mouse_is_inside = false;
+					  $(function(){
+					  $("#login-popup-box").hide();
+					  /*
+					  $('#login-popup').hover(function(){ 
+							mouse_is_inside=true; 
+							$("#login-popup-box").show();
+						}, function(){ 
+							mouse_is_inside=false; 
+						});
+*/
+						//
+						$('#login-popup').live('mouseover mouseout', function(event) {
+							if (event.type == 'mouseover') {
+							// do something on mouseover
+							mouse_is_inside=true; 
+							$("#login-popup-box").show();
+							} else {
+							// do something on mouseout
+							mouse_is_inside=false; 
+							}
+						});
+						//
+						//
+						loginboxLoad();
+					
+					   $("body").click(function(){
+						   if(!mouse_is_inside){
+								$("#login-popup-box").hide();
+							}
+					  });
+					  					  $('#search-keyword-text').val($('#search-keyword-text').attr('title'));
+					  					   					  $('#search-address-text').val($('#search-address-text').attr('title'));
+					  						$('#search-keyword-text').click(function(){
+							if($(this).val()==$(this).attr('title'))
+								$(this).val('');
+							$(this).css('font-size','14px');
+							$(this).css('color','#000');
+						});
+						$('#search-address-text').click(function(){
+							if($(this).val()==$(this).attr('title'))
+								$(this).val('');
+							$(this).css('font-size','14px');
+							$(this).css('color','#000');
+						});
+						$('#search-keyword-text').blur(function(){
+							if($(this).val()*1==0){
+								 $(this).val($(this).attr('title'));
+								 $(this).css('font-size','12px');
+								 $(this).css('color','#979797');
+							}else{
+							
+							}
+						});
+						$('#search-address-text').blur(function(){
+							if($(this).val()*1==0){
+								 $(this).val($(this).attr('title'));
+								 $(this).css('font-size','12px');
+								 $(this).css('color','#979797');
+							}else{
+								
+							}
+						});
+						$('#search').submit(function(){
+						//$('#search-keyword-text').val($('#search-keyword-text').attr('title'));
+						//alert($('#search-address-text').val()+"=="+$('#search-address-text').attr('title'));
+							if($('#search-keyword-text').val()==$('#search-keyword-text').attr('title')){
+								$('#search-keyword-text').val('');
+								if($('#search-address-text').val()==$('#search-address-text').attr('title')){
+									$('#search-address-text').val('');
+								}
+								return true;
+							}
+							if($('#search-address-text').val()==$('#search-address-text').attr('title')){
+								$('#search-address-text').val('');
+								return true;
+							}
+							
+						});
+						$('#logout-button').live("click",function(){
+							window.location="";
+						});
+					  });
+			function loginboxLoad(){
+				$.post('/loginbox/lang/th/',function(result){
+					$('#login-web').html(result);
+				},'html');
+			}
+			function loadNotification(userID){
+				$.post('/api.php',{func:'getUserOverallStatus',userID:userID},function(result){
+					//console.log(result);
+					if(result.status=="200"){
+						$('.notification').html(" "+eval(result.overallStatus.friendRequestCount)+eval(result.overallStatus.unreadComplimentCount)+eval(result.overallStatus.unreadMessageCount));
+						$('#friend-request-show').html("ขอเป็นเพื่อน("+eval(result.overallStatus.friendRequestCount)+")");
+						$('#new-compliment-show').html("คำชมเชย("+eval(result.overallStatus.unreadComplimentCount)+")");
+						$('#new-message-show').html("ข้อความ("+eval(result.overallStatus.unreadMessageCount)+")");
+					}
+				},'json');
+			}
+</script>
+<div id="main-banner">
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.painaidii.com/www/delivery/ajs.php':'http://ads.painaidii.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=130");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://ads.painaidii.com/www/delivery/ck.php?n=a7f495af&amp;cb=99999999' target='_blank'><img src='http://ads.painaidii.com/www/delivery/avw.php?zoneid=130&amp;cb=999999999&amp;n=a7f495af' border='0' alt='' /></a></noscript>
+
+</div><!-- main-banner -->	
+		<div id="logo"><a href="http://www.painaidii.com//index/lang/th/"><img src="http://www.painaidii.com/../tpl/./images/logo.png" /></a></div><!-- logo -->
+		<div id="header-right">
+			<div id="login-area">
+								<div id="facebook-login" ><!--perms="email,user_birthday,user_photos,status_update,publish_stream,offline_access"-->
+				 <fb:login-button autologoutlink="true" perms="email,user_birthday,user_photos,status_update,publish_stream,offline_access"></fb:login-button>
+					<div id="fb-root"></div>
+					<script>
+					var fbIsConnected=0;
+					  window.fbAsyncInit = function() {
+						FB.init({appId: '114215282007768', status: true, cookie: true,xfbml: true,oauth : true});
+						FB.Event.subscribe('auth.login', function(response) {
+							 // do something with response
+							 //alert('wait....');
+							 						 });
+						FB.Event.subscribe('auth.logout', function(response) {
+							 // do something with response
+							window.location="";
+						 });
+						 FB.getLoginStatus(function(response) {
+							  if (response.authResponse) {
+								$('#facebook-login').hide();
+							  } else {
+							  }
+						});
+                         /* popup allow facebook app
+						 FB.getLoginStatus(function(response) {
+							  if (response.authResponse) {
+								// logged in and connected user, someone you know
+								//$('#facebook-login').hide();
+							  } else {
+								// no user session available, someone you dont know
+							   FB.login(function(response) {
+							   if (response.authResponse) {
+								  console.log(reponse);
+								  // here will be all the response details from confirmed app
+							   } else {
+								 //console.log('User cancelled login or did not fully authorize.');
+							   }
+							 }, {scope: 'email,user_birthday,user_photos,status_update,publish_stream,offline_access'});
+							  }
+						});*/
+
+					  };
+					  (function() {
+						var e = document.createElement('script');
+						e.type = 'text/javascript';
+						e.src = document.location.protocol +
+						  '//connect.facebook.net/en_US/all.js';
+						e.async = true;
+						document.getElementById('fb-root').appendChild(e);
+						//$('#facebook-login').hide();
+					  }());
+					</script>
+				</div><!-- facebook-login -->
+								<ul id="login-web" class="clearfix">
+				</ul><!-- login-web -->
+			</div><!-- login-area -->
+			<form id="search" method="GET" action="/business/search-review/lang/th/">
+				<label>ค้นหาสถานที่</label>
+				<input type="text" class="input-text" title="ชื่อร้าน, คำสำคัญ" id='search-keyword-text' name='keyword' />
+				<input type="text" class="input-text" title="ที่อยู่, อำเภอ, จังหวัด" id='search-address-text' name='address' />
+				<button type="submit" class="button-submit"><img src="http://www.painaidii.com/../tpl/./images/th-go.png" /></button>
+			</form><!-- search -->
+		</div><!-- header-right -->
+		<div id="nav">
+		
+			<ul id="main-menu" class="clearfix">
+				<li ><a href="http://www.painaidii.com/index/lang/th/">หน้าแรก</a></li>
+
+				<li  >
+					<a href="http://www.painaidii.com/wheretogo/index/lang/th/">ไปไหนดี</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/wheretogo/index/lang/th/?category_id=1&tag=Foods">กินที่ไหนดี</a></li>
+						<li><a href="http://www.painaidii.com/wheretogo/index/lang/th/?category_id=6&tag=Tourist Attraction">เที่ยวที่ไหนดี</a></li>
+						<li><a href="http://www.painaidii.com/wheretogo/index/lang/th/?category_id=5&tag=Hotel, Travel">พักที่ไหนดี</a></li>
+					</ul><!-- .sub-menu -->
+				</li>
+
+				<li  >
+					<a href="http://www.painaidii.com/city/all/lang/th/">เที่ยวเมืองไทย</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/city/กรุงเทพมหานคร/lang/th/">กรุงเทพมหานคร</a></li>
+						<li><a href="http://www.painaidii.com/city/เชียงใหม่/lang/th/">เชียงใหม่</a></li>
+						<li><a href="http://www.painaidii.com/city/พัทยา/lang/th/">พัทยา</a></li>
+						<li><a href="http://www.painaidii.com/city/หัวหิน/lang/th/">หัวหิน</a></li>
+						<li><a href="http://www.painaidii.com/city/ภูเก็ต/lang/th/">ภูเก็ต</a></li>
+						<li><a href="http://www.painaidii.com/city/all/lang/th/">เมืองอื่นๆ &gt;&gt;</a></li>
+					</ul><!-- .sub-menu -->
+				</li>
+
+				<li >
+					<a href="http://www.painaidii.com/business/search-review/lang/th/">รีวิว</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/business/search-review/lang/th/">ค้นหารีวิว</a></li>
+						<li><a href="http://www.painaidii.com/business/add-review/lang/th/">เขียนรีวิว</a></li>
+					</ul><!-- .sub-menu -->
+				</li>
+				
+				<li >
+				<li ><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=1">บทความ</a> 
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=1">บทความ..ไปไหนดี</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=2">ไปไหนดี ไกด์</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=4">บ.ก.พาชิมพาชม</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?keyword=ตะลอนชิม">ตะลอนชิม ริมชานเมือง</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?keyword=แบบนี้ก็มีด้วย">กินเที่ยวแบบนี้ก็มืด้วย</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=3">สมาชิกพากินพาเที่ยว</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=7">เที่ยวรอบโลก</a></li>
+						<li><a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=5">ข่าวประชาสัมพันธ์</a></li>
+						<!--li><a href="http://www.painaidii.com/diary-award/lang/th/">ประกวดบทความ</a></li>
+						<li><a href="http://www.painaidii.com/diary-vote/lang/th/">โหวตบทความ 2012</a></li-->
+					</ul><!-- .sub-menu -->
+				</li>
+				<li>
+					<a href="http://www.painaidii.com/event/index/lang/th/">อีเว้นท์</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/event/index/lang/th/?keyword=เมืองทองธานี">อิมแพค เมืองทองธานี</a></li>
+						<li><a href="http://www.painaidii.com/event/index/lang/th/?keyword=ศูนย์การประชุมแห่งชาติสิริกิติ์">ศูนย์ฯ สิริกิติ์</a></li>
+						<li><a href="http://www.painaidii.com/event/index/lang/th/?keyword=ไบเทคบางนา">ไบเทค บางนา</a></li>
+					</ul><!-- .sub-menu -->
+				</li>
+				<li class="active" >
+					<a href="http://www.painaidii.com/promotion/index/lang/th/">โปรโมชั่น</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/promotion/index/lang/th/?offerType=deal">ดีล</a></li>
+						<!--li><a href="http://www.painaidii.com/promotion/index/lang/th/?offerType=surprisedeal">เซอร์ไพรส์ ดีล</a></li-->
+						<!--li><a href="http://www.painaidii.com/promotion/index/lang/th/?offerType=coupon">คูปอง</a></li-->
+						<li><a href="http://www.painaidii.com/promotion/index/lang/th/?categoryID=1">โปรโมชั่นอาหาร</a></li>
+						<li><a href="http://www.painaidii.com/promotion/index/lang/th/?categoryID=5">โปรโมชั่นที่พัก</a></li>
+						<li><a href="http://www.painaidii.com/promotion/index/lang/th/?keyword=โปรโมชั่นสายการบิน">โปรโมชั่นสายการบิน</a></li>
+						<li><a href="http://www.rentalcars.com/Home.do?affiliateCode=painaidii&preflang=th&adplat=link&country=Thailand">โปรโมชั่นรถเช่า</a></li>
+						<!--li><a href="http://www.painaidii.com/promotion/index/lang/th/?offerType=other">โปรโมชั่นอื่นๆ</a></li-->
+					</ul><!-- .sub-menu -->
+				</li>
+				<li>
+					<a href="http://flights.painaidii.com">จองตั๋ว/ที่พัก</a>
+					<ul class="sub-menu">
+						<li><a href="http://flights.painaidii.com">จองตั๋วเครื่องบิน</a></li>
+						<li><a href="http://www.agoda.com/th-th/?cid=1483668">จองโรงแรม</a></li>
+						<li><a href="http://www.rentalcars.com/Home.do?affiliateCode=painaidii&preflang=th&adplat=link&country=Thailand">เช่ารถ</a></li>
+					</ul><!-- .sub-menu -->
+				</li>
+				<li><a href="http://www.painaidii.com/getfree/index/lang/th/">ไปไหนดี จัดให้  </a></li>
+				<!--li ><a href="http://www.painaidii.com/getfree/index/lang/th/">ร่วมสนุก</a>
+					<ul class="sub-menu">
+						<li><a href="http://www.painaidii.com/getfree/index/lang/th/">ไปไหนดี จัดให้  </a></li>
+						<li><a href="http://www.painaidii.com/clip/award/lang/th/">คลิป อวอร์ด 2014</a></li>
+						<li><a href="http://www.painaidii.com/diary-award/lang/th/">ไดอะรี่ อวอร์ด 2014</a></li>
+					</ul>
+				</li-->
+				<li>
+				<a href="http://www.painaidii.com/diary/index/lang/th/?diaryTypeID=6">เล่านอกเรื่อง</a>
+				<ul class="sub-menu">
+					<li><a href="http://www.painaidii.com/most-like/index/lang/th/">ฮอตฮิตติดกระแส</a></li>
+					<li><a href="http://www.painaidii.com/picpost/index/lang/th/" >พิคโพส</a></li>
+					<li><a href="http://www.painaidii.com/clip/index/lang/th/" >วิดีโอคลิป</a></li>
+					<!--li><a href="http://www.painaidii.com//ig/index/lang/th/" >Instagram</a></li-->
+				</ul><!-- .sub-menu -->
+				</li>
+			</ul><!-- main-menu -->
+			<div id="language">
+				<a href="http://www.painaidii.com/promotion/index/lang/th/"><img src="http://www.painaidii.com/../tpl/./images/th.png" /></a>
+				<a href="http://www.painaidii.com/promotion/index/lang/en/"><img src="http://www.painaidii.com/../tpl/./images/en.png" /></a>
+			</div><!-- language -->
+		</div><!-- nav --></div><!-- header -->
+	<div class="recommend-pic-2" style=" margin-bottom:10px;">
+		<div class="imgteaser">
+			<iframe id='a57f937b' name='a57f937b' src='http://ads.painaidii.com/www/delivery/afr.php?zoneid=106&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='960' height='300'><a href='http://ads.painaidii.com/www/delivery/ck.php?n=a3fac04a&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.painaidii.com/www/delivery/avw.php?zoneid=106&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a3fac04a' border='0' alt='' /></a></iframe>
+		</div>	<!-- imgteaser -->
+	</div><!-- recommend-pic-2 -->
+	<div id="main" class="clearfix">
+		<div id="promotion-another" class="clearfix">
+			<div class="content-box">
+				<h1>โปรโมชั่น 
+								</h1>
+				<div class="result-pagi">
+					<div class="page-number">
+										</div><!-- page-number -->
+					<div class="result-nav" style=" text-align:right;">เรียงตาม : <a href="http://www.painaidii.com/promotion/index/lang/th/?keyword=&address=&categoryID=&subcategoryID=&offerTypeID=&page=&orderByID=2" class="active" >ล่าสุด</a> | <a href="http://www.painaidii.com/promotion/index/lang/th/?keyword=&address=&categoryID=&subcategoryID=&offerTypeID=&page=&orderByID=1" >ยอดนิยม</a></div><!-- result-nav -->
+				</div><!-- result-pagi -->
+				<div class="content-list">
+					<div class="content-box-4" >
+						<div class="row">
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14419/air-asia/lang/th/"><img src="http://img.painaidii.com/images/20151130_3_1448848579_204724_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน แอร์เอเชีย<br/>30/11/2558 - 06/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14419/air-asia/lang/th/">บินไปบอก HUG พ่อ ราคารวมเริ่มต้น 690 บาท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14437/cuisine-unplugged/lang/th/"><img src="http://img.painaidii.com/images/20151126_3_1448508757_561666_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">ควิซีน อันปลั๊ก<br/>05/12/2558 - 05/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14437/cuisine-unplugged/lang/th/">อิ่มอร่อยวันพ่อแห่งชาติ 2558 ณ ห้องอาหารควิซีน อันปลั๊ก  ณ โรงแรมพูลแมน คิง เพาเวอร์ กรุงเทพ</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14436/zen-department-store/lang/th/"><img src="http://img.painaidii.com/images/20151125_3_1448425514_147337_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">เซน<br/>25/11/2558 - 01/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14436/zen-department-store/lang/th/">ช้อปเจิดจ้าสู่ค่ำคืนเซลแห่งปี ห้างเซ็นทรัล/เซน จัดมิดไนท์เซล ลดสูงสุด 70%</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14435/atelier-restaurant/lang/th/"><img src="http://img.painaidii.com/images/20151125_3_1448419211_455904_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">ห้องอาหารอเทลิเย่<br/>05/12/2558 - 05/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14435/atelier-restaurant/lang/th/">คุณพ่ออิ่มฟรี วันพ่อ 2558 ที่ห้องอาหารอเทลิเย่ โรงแรมพูลแมน กรุงเทพฯ แกรนด์ สุขุมวิท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14411/air-asia/lang/th/"><img src="http://img.painaidii.com/images/20151130_3_1448849804_631531_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน แอร์เอเชีย<br/>30/11/2558 - 13/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14411/air-asia/lang/th/">AirAsiaGo 7 Days SALE! | 3 วัน 2 คืน โรงแรม+เที่ยวบิน+ภาษี เริ่มต้นที่ 2,190บาท/ท่าน</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14434/awa-resort-koh-chang/lang/th/"><img src="http://www.u2deal.com/allmedia/pic/1589/1.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/deal/U2Deal80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">เอวา รีสอร์ท เกาะช้าง<br/>13/11/2558 - 01/04/2559<br/>ดีล</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14434/awa-resort-koh-chang/lang/th/">฿2,100 บาท พักสงบเกาะช้างท่ามกลางธรรมชาติทั้งแบบป่าเขาและทะเลใส @เอวา รีสอร์ท เกาะช้าง </a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14433/the-village-coconut-island-resort/lang/th/"><img src="http://www.u2deal.com/allmedia/pic/1590/1.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/deal/U2Deal80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">เดอะ วิลเลจ โคโคนัท ไอส์แลนด์ รีสอร์ท<br/>13/11/2558 - 01/10/2559<br/>ดีล</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14433/the-village-coconut-island-resort/lang/th/">฿3,500 นอนหรู 5 ดาวเกาะภูเก็ตในห้องพัก ทรอปิคอล จากุซซี่ สวีท @เดอะวิลเลจโคโคนัท ไอส์แลนด์ บีช รีสอร์ท ภูเก็ต </a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14427/sofitel-phokeethra-resort-and-spa/lang/th/"><img src="http://img.painaidii.com/images/20151029_3_1446084261_930264_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">โซฟิเทล  โภคีธรา  รีสอร์ท  แอนด์ สปา<br/>28/10/2558 - 31/03/2559<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14427/sofitel-phokeethra-resort-and-spa/lang/th/">ข้อเสนอพิเศษ ADVANCE PURCHASE RATE รับส่วนลด 20%  ที่โรงแรม โซฟิเทล กระบี่ โภคีธรา กอล์ฟ แอนด์ สปา รีสอร์ท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14424/hornbill-hill-resort-/lang/th/"><img src="http://www.u2deal.com/allmedia/pic/1585/1.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/deal/U2Deal80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">ภูนกเงือก รีสอร์ท by โฮมดีไซน์<br/>19/10/2558 - 01/06/2559<br/>ดีล</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14424/hornbill-hill-resort-/lang/th/">฿1,800 นอนชิลล์ริมเขื่อนศรีฯพร้อมกิจกรรมริมน้ำสุดเริ่ด @ ภูนกเงือก รีสอร์ท by โฮมดีไซน์ กาญจนบุรี</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14425/pung-waan-resort-spa-kwai-noi/lang/th/"><img src="http://www.u2deal.com/allmedia/pic/1584/1.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/deal/U2Deal80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">ผึ้ง-หวาน รีสอร์ท แอนด์ สปา (แควน้อย)<br/>19/10/2558 - 01/02/2559<br/>ดีล</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14425/pung-waan-resort-spa-kwai-noi/lang/th/">฿1,200 ชวนพักห้องริมบึงหรือห้องคูบัว ที่พักสวยท่ามกลางแมกไม้ใกล้ชิดธรรมชาติ @ผึ้งหวาน รีสอร์ท ไทรโยค กาญจนบุรี</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14410/air-asia/lang/th/"><img src="http://img.painaidii.com/images/20151123_3_1448246180_956716_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน แอร์เอเชีย<br/>23/11/2558 - 06/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14410/air-asia/lang/th/">3 เส้นทางการบินใหม่ บินตรงจากพัทยา (อู่ตะเภา) ราคารวม 590 บาท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14405/air-asia/lang/th/"><img src="http://img.painaidii.com/images/20151109_3_1447033462_481723_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน แอร์เอเชีย<br/>02/11/2558 - 31/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14405/air-asia/lang/th/">Go Holiday with SUPER SAVERMAN | 3 วัน 2 คืน โรงแรม+เที่ยวบิน+ภาษี เริ่มต้นที่ 2,999บาท/ท่าน</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14412/air-asia/lang/th/"><img src="http://img.painaidii.com/images/20151130_3_1448849213_968485_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน แอร์เอเชีย<br/>30/11/2558 - 06/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14412/air-asia/lang/th/">ช้อปกระหน่ำรับปีใหม่ บินโอซาก้า โตเกียว โซล เริ่มต้น 4,490 บาท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14420/thai-lion-air/lang/th/"><img src="http://img.painaidii.com/images/20151116_3_1447638265_899097_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">สายการบิน ไทย ไลอ้อน แอร์<br/>11/11/2558 - 31/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14420/thai-lion-air/lang/th/">เส้นทางหาดใหญ่ - อุดรธานี  ราคารวมเริ่มต้น 1,625 บาท</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+												  <div class="actitem-4" style="height:260px;">
+						    <div class="item" style="position:relative">
+                              <div class="pic" >
+							  	<a href="http://www.painaidii.com/promotion/14423/cafe-de-nimes/lang/th/"><img src="http://img.painaidii.com/images/20151008_3_1444274133_750546_m.jpg"/></a>
+							  </div>
+								<div style=" position:absolute;top:110px; right:5px;">
+									<img src="http://www.painaidii.com/tpl/images/promotion/other80x80.png" style="width:30px;"/>
+								</div>
+						      <div class="info">
+							  	<p style="height:50px;">คาเฟ่ เดอ นีมส์<br/>01/10/2558 - 31/12/2558<br/>ส่วนลดอื่นๆ</p>
+                                <h3><a href="http://www.painaidii.com/promotion/14423/cafe-de-nimes/lang/th/">Seafood Maniac อิ่มแบบไม่อั้นทุกๆ วันกับ บอสตันลอบส์เตอร์ ปูอลาสก้า กุ้ง กั้ง @คาเฟ่ เดอ นิมส์</a></h3>
+					          </div><!-- .info -->
+                            </div><!-- item -->
+						</div><!-- .actitem -->
+										      </div><!-- row -->
+					</div><!-- .contentbox -->
+				</div><!-- content-list -->	
